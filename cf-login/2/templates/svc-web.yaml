@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: cf-login-svc
+  namespace: cf-login
+spec:
+  selector:
+    app: cf-login
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+  type: ClusterIP
+status:
+  loadBalancer: {}
