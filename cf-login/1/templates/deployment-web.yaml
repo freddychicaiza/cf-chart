@@ -9,7 +9,9 @@ spec:
     type: Recreate
   template:
     metadata:
+      creationTimestamp: null
       labels:
+        workload.user.cattle.io/workloadselector: {{ .Values.name }}
         app: {{ .Values.name }}
     spec:
       containers:
