@@ -3,8 +3,6 @@ kind: Ingress
 metadata:
   name: "{{ .Values.name }}-ingress"
   namespace: {{ .Values.name }}
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - host: login.favorita.ec
