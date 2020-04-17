@@ -4,14 +4,12 @@ metadata:
   name: {{ .Values.name }}
   namespace: {{ .Values.name }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicas }}
   strategy:
     type: Recreate
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        workload.user.cattle.io/workloadselector: {{ .Values.name }}
         app: {{ .Values.name }}
     spec:
       containers:
@@ -19,10 +17,11 @@ spec:
         - secretRef:
             name: cf-preproduccion
             optional: false
-      containers:
         - name: {{ .Values.name }}
           image: {{ .Values.registry }}/{{ .Values.image.web.repository }}:{{ .Values.image.web.tag }}
           imagePullPolicy: {{ .Values.image.web.pullPolicy }}
+          ports:
+            - containerPort: 8080
           resources:
             requests:
               cpu: 500m
