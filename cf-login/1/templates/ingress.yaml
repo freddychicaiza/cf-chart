@@ -8,7 +8,7 @@ spec:
   - host: login.favorita.ec
     http:
       paths:
-      - path: /login
+      - path: /login/
         backend:
           serviceName: "{{ .Values.name }}-svc"
           servicePort: 8080
