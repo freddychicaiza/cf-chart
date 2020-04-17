@@ -13,10 +13,9 @@ spec:
         app: {{ .Values.name }}
     spec:
       containers:
-      - envFrom:
-        - secretRef:
-            name: cf-preproduccion
-            optional: false
+          envFrom:
+          - secretRef:
+              name: cf-preproduccion
         - name: {{ .Values.name }}
           image: {{ .Values.registry }}/{{ .Values.image.web.repository }}:{{ .Values.image.web.tag }}
           imagePullPolicy: {{ .Values.image.web.pullPolicy }}
