@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: "{{ .Values.name }}-ingress"
+  namespace: {{ .Values.name }}
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: login.favorita.ec
+    http:
+      paths:
+      - backend:
+          serviceName: "{{ .Values.name }}-svc"
+          servicePort: 8080
+        path: /login

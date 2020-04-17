@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ .Values.name }}
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name }}
+    spec:
+      containers:
+      - envFrom:
+        - secretRef:
+            name: cf-preproduccion
+            optional: false
+      containers:
+        - name: {{ .Values.name }}
+          image: {{ .Values.registry }}/{{ .Values.image.web.repository }}:{{ .Values.image.web.tag }}
+          imagePullPolicy: {{ .Values.image.web.pullPolicy }}
+          resources:
+            requests:
+              cpu: 500m
+              memory: 1Gi
+            limits:
+              cpu: 500m
+              memory: 2Gi
+      
