@@ -1,8 +1,8 @@
 ﻿apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: "{{ .Values.name }}-standalone-config"
-  namespace: {{ .Values.namespace }}
+  name: cf-login-standalone-config
+  namespace: cf-apps
 data:
   standalone-ha.xml: |
     <?xml version='1.0' encoding='UTF-8'?>
