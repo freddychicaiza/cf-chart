@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: "{{ .Values.name }}-ingress"
+  namespace: {{ .Values.namespace }}
+spec:
+  rules:
+  - host: k8s.favorita.ec
+    http:
+      paths:
+      - path: /login/
+        backend:
+          serviceName: "{{ .Values.name }}-svc"
+          servicePort: 8080
