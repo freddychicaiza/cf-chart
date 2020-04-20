@@ -41,8 +41,8 @@ spec:
             limits:
               cpu: 500m
               memory: 2Gi
-        volumes:
-        - configMap:
-            name: "{{ .Values.name }}-standalone-config"
-          name: vol1
+      volumes:
+      - configMap:
+          name: "{{ .Values.name }}-standalone-config"
+        name: vol1
       
