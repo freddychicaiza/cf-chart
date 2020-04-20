@@ -2,6 +2,7 @@ replicas: 1
 
 name: cf-corporativo
 registry: docker.favorita.ec
+namespace: cf-apps
 
 image:
   web:

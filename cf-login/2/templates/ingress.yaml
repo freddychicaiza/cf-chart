@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: "{{ .Values.name }}-ingress"
-  namespace: {{ .Values.name }}
+  namespace: {{ .Values.namespace }}
 spec:
   rules:
   - host: k8s.favorita.ec
