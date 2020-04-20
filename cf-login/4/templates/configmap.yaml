@@ -1,11 +1,8 @@
 ﻿apiVersion: v1
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2020-04-20T18:40:36Z"
-  name: standalone-jboss
-  namespace: default
-  resourceVersion: "1302385"
-  uid: 3d433820-cffb-4da0-9df3-764e850e5dc1
+  name: "{{ .Values.name }}-standalone-config"
+  namespace: {{ .Values.namespace }}
 data:
   standalone-ha.xml: "<?xml version='1.0' encoding='UTF-8'?>\n\n<server xmlns=\"urn:jboss:domain:5.0\">\n
     \   <extensions>\n        <extension module=\"org.jboss.as.clustering.infinispan\"/>\n
