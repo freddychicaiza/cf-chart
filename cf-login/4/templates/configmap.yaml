@@ -1,8 +1,0 @@
-﻿apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: "{{ .Values.name }}-standalone-config"
-  namespace: {{ .Values.namespace }}
-data:
-  SPECIAL_LEVEL: very
-  SPECIAL_TYPE: charm
