@@ -31,6 +31,9 @@ spec:
               value: {{ default "" .Values.JVM_XMX | quote }}
           ports:
             - containerPort: 8080
+          volumeMounts:
+          - mountPath: /tmp-jboss
+            name: vol1
           resources:
             requests:
               cpu: 500m
