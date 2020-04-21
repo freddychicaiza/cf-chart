@@ -2,7 +2,7 @@
 kind: ConfigMap
 metadata:
   name: "{{ .Values.name }}-standalone-config"
-  namespace: {{ .Values.namespace }}
+  namespace: "{{ .Values.namespace }}"
 data:
   standalone-ha.xml: /
     <?xml version='1.0' encoding='UTF-8'?>
