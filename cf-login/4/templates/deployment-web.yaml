@@ -18,6 +18,13 @@ spec:
         app: {{ .Values.name }}
     spec:
       containers:
+      initContainers:
+        - name: "{{ .Values.name }}-copy"
+          image: {{ .Values.registry }}/{{ .Values.image.web.repository }}:{{ .Values.image.web.tag }}
+          command: ["/bin/sh", "-c", "cp /tmp-jboss/standalone.conf /opt/"]
+          volumeMounts:
+          - mountPath: /tmp-jboss
+            name: vol1
         - name: {{ .Values.name }}
           image: {{ .Values.registry }}/{{ .Values.image.web.repository }}:{{ .Values.image.web.tag }}
           imagePullPolicy: {{ .Values.image.web.pullPolicy }}
@@ -41,13 +48,6 @@ spec:
             limits:
               cpu: 500m
               memory: 2Gi
-      initContainers:
-        - name: copy
-          image: {{ .Values.registry }}/{{ .Values.image.web.repository }}:{{ .Values.image.web.tag }}
-          command: ["bash", "-c", "cp /tmp-jboss/standalone.conf /opt/"]
-          volumeMounts:
-          - mountPath: /tmp-jboss
-            name: vol1
       volumes:
       - configMap:
           name: "{{ .Values.name }}-standalone-config"
