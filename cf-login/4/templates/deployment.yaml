@@ -36,15 +36,16 @@ spec:
               name: http
               protocol: TCP
           livenessProbe:
+          failureThreshold: 3
             httpGet:
-              path:
+              path: /
               port: 8080
-          initialDelaySeconds: 60
+            initialDelaySeconds: 60
           readinessProbe:
             httpGet:
               path:
               port: 8080
-          initialDelaySeconds: 60
+            initialDelaySeconds: 60
           volumeMounts:
           - mountPath: /tmp-jboss
             name: vol1
