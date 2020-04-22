@@ -39,12 +39,12 @@ spec:
             httpGet:
               path: /
               port: 8080
-            initialDelaySeconds: 120
+            initialDelaySeconds: 90
           readinessProbe:
             httpGet:
               path:
               port: 8080
-            initialDelaySeconds: 120
+            initialDelaySeconds: 90
           volumeMounts:
           - mountPath: /tmp-jboss
             name: vol1
