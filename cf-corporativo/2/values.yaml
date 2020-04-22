@@ -1,0 +1,11 @@
+replicas: 1
+
+name: cf-corporativo
+registry: docker.favorita.ec
+namespace: cf-apps
+
+image:
+  web:
+    repository: jboss/cf-corporativo
+    tag: 1.0.0
+    pullPolicy: Always

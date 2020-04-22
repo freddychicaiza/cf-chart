@@ -1,0 +1,23 @@
+questions:
+- variable: JVM_XMS
+  default: "1G"
+  description: "JVM Memoria inicial"
+  type: string
+  required: true
+  label: JVM Memoria inicial
+  group: "APP Settings"
+- variable: JVM_XMX
+  default: "2G"
+  description: "JVM Memoria máxima"
+  type: string
+  required: true
+  label: JVM Memoria máxima
+  group: "APP Settings"
+- variable: JVM_MaxMetaspaceSize
+  default: "512m"
+  description: "JVM MaxMetaspaceSize"
+  type: string
+  required: true
+  label: JVM MaxMetaspaceSize
+  group: "APP Settings"
+
