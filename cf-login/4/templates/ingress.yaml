@@ -12,3 +12,7 @@ spec:
         backend:
           serviceName: "{{ .Values.name }}-svc"
           servicePort: 8080
+  tls:
+  - hosts:
+    - k8s.favorita.ec
+    secretName: favorita-ec
