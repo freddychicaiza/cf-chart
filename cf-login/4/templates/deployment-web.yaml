@@ -33,6 +33,16 @@ spec:
               value: {{ default "" .Values.JVM_MaxMetaspaceSize | quote }}
           ports:
             - containerPort: 8080
+              name: http
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
           volumeMounts:
           - mountPath: /tmp-jboss
             name: vol1
