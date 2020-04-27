@@ -42,7 +42,7 @@ spec:
             initialDelaySeconds: 90
           readinessProbe:
             httpGet:
-              path:
+              path: /
               port: 8080
             initialDelaySeconds: 90
           volumeMounts:

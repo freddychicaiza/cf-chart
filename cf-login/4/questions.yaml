@@ -20,4 +20,19 @@ questions:
   required: true
   label: JVM MaxMetaspaceSize
   group: "APP Settings"
+- variable: SYS_DOMAIN
+  default: "https://aplpre.favorita.ec"
+  description: "System domain"
+  type: string
+  required: true
+  label: System domain
+  group: "APP Settings"
+- variable: SYS_ENVIRONMENT
+  default: "PRUEBAS"
+  description: "System environment"
+  type: string
+  required: true
+  label: System environment
+  group: "APP Settings"
+
 
