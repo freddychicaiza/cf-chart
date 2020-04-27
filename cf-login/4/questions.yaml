@@ -20,6 +20,7 @@ questions:
   required: true
   label: JVM MaxMetaspaceSize
   group: "Server Settings"
+
 - variable: SYS_DOMAIN
   default: "https://aplpre.favorita.ec"
   description: "System domain"
@@ -34,5 +35,52 @@ questions:
   required: true
   label: System environment
   group: "APP Settings"
+
+- variable: liveness_path
+  default: "/"
+  description: "Liveness probe path"
+  type: string
+  required: true
+  label: Liveness probe path
+  group: "Liveness Probe Settings"
+- variable: liveness_port
+  default: "8080"
+  description: "Liveness probe port"
+  type: string
+  required: true
+  label: Liveness probe port
+  group: "Liveness Probe Settings"
+- variable: liveness_initial_delay
+  default: "90"
+  description: "Liveness initial delay seconds"
+  type: string
+  required: true
+  label: Liveness initial delay seconds
+  group: "Liveness Probe Settings"
+
+- variable: readiness_path
+  default: "/"
+  description: "Readiness probe path"
+  type: string
+  required: true
+  label: Readiness probe path
+  group: "Readiness Probe Settings"
+- variable: readiness_port
+  default: "8080"
+  description: "Readiness probe port"
+  type: string
+  required: true
+  label: Readiness probe port
+  group: "Readiness Probe Settings"
+- variable: readiness_initial_delay
+  default: "90"
+  description: "Readiness initial delay seconds"
+  type: string
+  required: true
+  label: Readiness initial delay seconds
+  group: "Readiness Probe Settings"
+
+
+
 
 

@@ -37,14 +37,14 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
-              port: 8080
-            initialDelaySeconds: 90
+              path: {{ default "" .Values.liveness_path | quote }}
+              port: {{ default "" .Values.liveness_port | quote }}
+            initialDelaySeconds: {{ default "" .Values.liveness_initial_delay | quote }}
           readinessProbe:
             httpGet:
-              path: /
-              port: 8080
-            initialDelaySeconds: 90
+              path: {{ default "" .Values.readiness_path | quote }}
+              port: {{ default "" .Values.readiness_port | quote }}
+            initialDelaySeconds: {{ default "" .Values.readiness_initial_delay | quote }}
           volumeMounts:
           - mountPath: /tmp-jboss
             name: vol1
