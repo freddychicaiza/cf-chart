@@ -1,10 +1,6 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  annotations:
-    nginx.ingress.kubernetes.io/affinity: cookie
-    nginx.ingress.kubernetes.io/session-cookie-hash: sha1
-    nginx.ingress.kubernetes.io/session-cookie-name: JSESSIONID
   name: "{{ .Values.name }}-ingress"
   namespace: {{ .Values.namespace }}
 spec:
