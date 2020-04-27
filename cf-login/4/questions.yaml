@@ -1,4 +1,26 @@
 questions:
+- variable: registry
+  default: "docker.favorita.ec"
+  description: "Docker registry"
+  type: string
+  required: true
+  label: Docker registry
+  group: "App Version"
+- variable: image.repository
+  default: "jboss/jboss-eap-7.1"
+  description: "Docker image name"
+  type: string
+  required: true
+  label: Docker image name
+  group: "App Version"
+- variable: image.tag
+  default: "1.0.0"
+  description: "Docker image version"
+  type: string
+  required: true
+  label: Docker image version
+  group: "App Version"
+
 - variable: JVM_XMS
   default: "1G"
   description: "JVM Memoria inicial"
