@@ -36,21 +36,21 @@ questions:
   label: System environment
   group: "APP Settings"
 
-- variable: liveness_path
+- variable: livenessProbe.httpGet.path
   default: "/"
   description: "Liveness probe path"
   type: string
   required: true
   label: Liveness probe path
   group: "Liveness Probe Settings"
-- variable: liveness_port
+- variable: livenessProbe.httpGet.port
   default: "8080"
   description: "Liveness probe port"
   type: string
   required: true
   label: Liveness probe port
   group: "Liveness Probe Settings"
-- variable: liveness_initial_delay
+- variable: livenessProbe.initialDelaySeconds
   default: "90"
   description: "Liveness initial delay seconds"
   type: string
@@ -58,21 +58,21 @@ questions:
   label: Liveness initial delay seconds
   group: "Liveness Probe Settings"
 
-- variable: readiness_path
+- variable: readinessProbe.httpGet.path
   default: "/"
   description: "Readiness probe path"
   type: string
   required: true
   label: Readiness probe path
   group: "Readiness Probe Settings"
-- variable: readiness_port
+- variable: readinessProbe.httpGet.port
   default: "8080"
   description: "Readiness probe port"
   type: string
   required: true
   label: Readiness probe port
   group: "Readiness Probe Settings"
-- variable: readiness_initial_delay
+- variable: readinessProbe.initialDelaySeconds
   default: "90"
   description: "Readiness initial delay seconds"
   type: string
