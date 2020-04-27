@@ -46,8 +46,8 @@ data:
             <property name="org.apache.tomcat.util.net.MAX_THREADS" value="400"/>
             <property name="org.apache.catalina.connector.URI_ENCODING" value="ISO-8859-1"/>
             <property name="org.apache.catalina.USE_BODY_ENCODING_FOR_QUERY_STRING" value="true"/>
-            <property name="domain" value="${SYS_DOMAIN}"/>
-            <property name="env" value="${SYS_ENVIRONMENT}"/>
+            <property name="domain" value="${env.SYS_DOMAIN}"/>
+            <property name="env" value="${env.SYS_ENVIRONMENT}"/>
             <property name="http.proxyHost" value="pxy12"/>
             <property name="http.proxyPort" value="8080"/>
             <property name="http.nonProxyHosts" value="10.*.*.*|*.slf.com.ec|*.supermaxi.corp|*.supermaxi.ec|*.agropesa.corp|*.asertec.com.ec|*.cfavorita.ec|*.favorita.ec|*.cfavorita.corp|localhost"/>
