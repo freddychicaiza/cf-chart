@@ -3,8 +3,9 @@ kind: Ingress
 metadata:
   annotations:
     nginx.ingress.kubernetes.io/affinity: cookie
-    nginx.ingress.kubernetes.io/session-cookie-hash: sha1
-    nginx.ingress.kubernetes.io/session-cookie-name: JSESSIONID
+    nginx.ingress.kubernetes.io/session-cookie-expires: 7200
+    nginx.ingress.kubernetes.io/session-cookie-max-age: 7200
+    nginx.ingress.kubernetes.io/session-cookie-name: route
   name: "{{ .Values.name }}-ingress"
   namespace: {{ .Values.namespace }}
 spec:
