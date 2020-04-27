@@ -20,7 +20,6 @@ questions:
   required: true
   label: JVM MaxMetaspaceSize
   group: "Server Settings"
-
 - variable: SYS_DOMAIN
   default: "https://aplpre.favorita.ec"
   description: "System domain"
@@ -35,7 +34,6 @@ questions:
   required: true
   label: System environment
   group: "APP Settings"
-
 - variable: livenessProbe.httpGet.path
   default: "/"
   description: "Liveness probe path"
@@ -57,7 +55,6 @@ questions:
   required: true
   label: Liveness initial delay seconds
   group: "Liveness Probe Settings"
-
 - variable: readinessProbe.httpGet.path
   default: "/"
   description: "Readiness probe path"
