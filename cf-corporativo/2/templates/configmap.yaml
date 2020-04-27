@@ -46,8 +46,8 @@ data:
             <property name="org.apache.tomcat.util.net.MAX_THREADS" value="400"/>
             <property name="org.apache.catalina.connector.URI_ENCODING" value="ISO-8859-1"/>
             <property name="org.apache.catalina.USE_BODY_ENCODING_FOR_QUERY_STRING" value="true"/>
-            <property name="domain" value="https://www.cfavorita.ec"/>
-            <property name="env" value="PRUEBAS"/>
+            <property name="domain" value="${env.SYS_DOMAIN}"/>
+            <property name="env" value="${env.SYS_ENVIRONMENT}"/>
             <property name="http.proxyHost" value="pxy12"/>
             <property name="http.proxyPort" value="8080"/>
             <property name="http.nonProxyHosts" value="10.*.*.*|*.slf.com.ec|*.supermaxi.corp|*.supermaxi.ec|*.agropesa.corp|*.asertec.com.ec|*.cfavorita.ec|*.favorita.ec|*.cfavorita.corp|localhost"/>
@@ -140,8 +140,8 @@ data:
                         <pattern-formatter pattern="%d{dd MMM yyyy HH:mm:ss,SSS} %-5p [%c] (%t) %s%E%n"/>
                     </formatter>
                     <file relative-to="jboss.server.log.dir" path="serverOut.log"/>
-                    <rotate-size value="10m"/>
-                    <max-backup-index value="10"/>
+                    <rotate-size value="20m"/>
+                    <max-backup-index value="20"/>
                     <append value="true"/>
                 </size-rotating-file-handler>
                 <logger category="com.arjuna">
@@ -739,7 +739,7 @@ data:
     # Specify options to pass to the Java VM.
     #
     if [ "x$JAVA_OPTS" = "x" ]; then
-       JAVA_OPTS="-Xms${JVM_XMS} -Xmx${JVM_XMX} -XX:MetaspaceSize=128M -XX:MaxMetaspaceSize=512m -Djava.net.preferIPv4Stack=true"
+       JAVA_OPTS="-Xms${JVM_XMS} -Xmx${JVM_XMX} -XX:MetaspaceSize=128M -XX:MaxMetaspaceSize=${JVM_MaxMetaspaceSize} -Djava.net.preferIPv4Stack=true"
        JAVA_OPTS="$JAVA_OPTS -Djboss.modules.system.pkgs=$JBOSS_MODULES_SYSTEM_PKGS -Djava.awt.headless=true"
     else
        echo "JAVA_OPTS already set in environment; overriding default settings with values: $JAVA_OPTS"
