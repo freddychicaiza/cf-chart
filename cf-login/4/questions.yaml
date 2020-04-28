@@ -37,7 +37,7 @@ questions:
 - variable: schemas
   default: "{smxmbase,smxcorp,smxsic}"
   description: "APP Schemas"
-  type: array
+  type: string
   required: true
   label: APP Schemas
   group: "App Version"
