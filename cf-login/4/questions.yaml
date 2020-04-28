@@ -27,6 +27,20 @@ questions:
   required: true
   label: Docker pull policy
   group: "App Version"
+- variable: secret
+  default: "cf-preproduccion"
+  description: "Secret"
+  type: string
+  required: true
+  label: Secret
+  group: "App Version"
+- variable: schemas
+  default: "{smxmbase,smxcorp,smxsic}"
+  description: "APP Schemas"
+  type: array
+  required: true
+  label: APP Schemas
+  group: "App Version"
 
 - variable: JVM_XMS
   default: "1G"

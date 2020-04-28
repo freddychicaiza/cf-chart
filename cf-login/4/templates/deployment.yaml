@@ -21,9 +21,6 @@ spec:
         - name: {{ .Values.name }}
           image: {{ .Values.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          envFrom:
-          - secretRef:
-              name: cf-preproduccion
           env:
             - name: JVM_XMS
               value: {{ default "" .Values.JVM_XMS | quote }}
@@ -35,6 +32,13 @@ spec:
               value: {{ default "" .Values.SYS_DOMAIN | quote }}
             - name: SYS_ENVIRONMENT
               value: {{ default "" .Values.SYS_ENVIRONMENT | quote }}
+            {{- range .Values.schemas }}
+            - name: {{ . }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secret }}
+                  key: {{ . }}
+            {{- end }}
           ports:
             - containerPort: 8080
               name: http

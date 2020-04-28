@@ -21,3 +21,10 @@ readinessProbe:
     port: 8080
   initialDelaySeconds: 90
 
+secret: cf-preproduccion
+
+schemas:
+  - smxsic
+  - smxcorp
+  - smxmbase
+
