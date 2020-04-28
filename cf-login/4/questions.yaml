@@ -30,7 +30,7 @@ questions:
 - variable: secret
   default: "cf-preproduccion"
   description: "Secret"
-  type: secret
+  type: string
   required: true
   label: Secret
   group: "App Version"
