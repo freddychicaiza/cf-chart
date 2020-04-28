@@ -36,7 +36,7 @@ spec:
             - name: {{ . }}
               valueFrom:
                 secretKeyRef:
-                  name: cf-preproduccion
+                  name: {{ .Values.secretName }}
                   key: {{ . }}
             {{- end }}
           ports:
