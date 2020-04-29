@@ -34,6 +34,13 @@ questions:
   required: true
   label: Secret
   group: "App Version"
+- variable: schemas
+  default: "{smxmbase,smxcorp,smxsic}"
+  description: "APP Schemas"
+  type: array
+  required: true
+  label: APP Schemas
+  group: "App Version"
 
 - variable: JVM_XMS
   default: "1G"
