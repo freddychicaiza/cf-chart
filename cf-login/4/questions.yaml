@@ -27,10 +27,10 @@ questions:
   required: true
   label: Docker pull policy
   group: "App Version"
-- variable: secret
+- variable: secretName
   default: "cf-preproduccion"
   description: "Secret"
-  type: string
+  type: secret
   required: true
   label: Secret
   group: "App Version"
