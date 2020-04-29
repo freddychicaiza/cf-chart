@@ -32,11 +32,12 @@ spec:
               value: {{ default "" .Values.SYS_DOMAIN | quote }}
             - name: SYS_ENVIRONMENT
               value: {{ default "" .Values.SYS_ENVIRONMENT | quote }}
+            {{- $secret  := .Values.secretName -}}
             {{- range .Values.schemas }}
             - name: {{ . }}
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.secretName }}
+                  name: {{ $secret }}
                   key: {{ . }}
             {{- end }}
           ports:
