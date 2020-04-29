@@ -7,7 +7,7 @@ questions:
   label: Docker registry
   group: "App Version"
 - variable: image.repository
-  default: "jboss/jboss-eap-7.1"
+  default: "jboss/cf-corporativo"
   description: "Docker image name"
   type: string
   required: true
@@ -26,6 +26,20 @@ questions:
   type: string
   required: true
   label: Docker pull policy
+  group: "App Version"
+- variable: secretName
+  default: "cf-preproduccion"
+  description: "Secret"
+  type: secret
+  required: true
+  label: Secret
+  group: "App Version"
+- variable: schemas
+  default: "{smxmbase,smxcorp,smxsic}"
+  description: "APP Schemas"
+  type: string
+  required: true
+  label: APP Schemas
   group: "App Version"
 
 - variable: JVM_XMS
