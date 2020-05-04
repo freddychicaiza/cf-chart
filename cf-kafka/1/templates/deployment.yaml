@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: {{ .Values.name }}
-          image: {{ .Values.image.zookeeper.repository }}:{{ .Values.image.tag }}
+          image: {{ .Values.image.zookeeper.repository }}:{{ .Values.image.zookeeper.tag }}
           imagePullPolicy: {{ .Values.image.zookeeper.pullPolicy }}
           env:
             - name: ZOOKEEPER_CLIENT_PORT
