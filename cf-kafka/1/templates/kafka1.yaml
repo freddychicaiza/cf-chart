@@ -23,7 +23,7 @@ spec:
           imagePullPolicy: {{ .Values.image.kafka.pullPolicy }}
           env:
             - name: KAFKA_ADVERTISED_LISTENERS
-              value: "INTERNAL://queue-kafka:30092,EXTERNAL://kafka1:9092"
+              value: {{ default "" .Values.KAFKA1_LISTENERS | quote }}
             - name: KAFKA_AUTO_OFFSET_RESET
               value: "earliest"
             - name: KAFKA_BROKER_ID
