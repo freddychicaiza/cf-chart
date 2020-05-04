@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: zookeeper1
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    app: zookeeper1
+  ports:
+  - protocol: TCP
+    port: 2181
+    targetPort: 2181
+  type: ClusterIP
+status:
+  loadBalancer: {}
+ 

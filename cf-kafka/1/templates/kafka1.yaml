@@ -51,21 +51,4 @@ spec:
           ports:
             - containerPort: 9092
               name: http
-              protocol: TCP
-
-kind: Service
-apiVersion: v1
-metadata:
-  name: kafka1
-  namespace: {{ .Values.namespace }}
-spec:
-  selector:
-    app: kafka1
-  ports:
-  - protocol: TCP
-    port: 9092
-    targetPort: 9092
-  type: ClusterIP
-status:
-  loadBalancer: {}
- 
+              protocol: TCP 
