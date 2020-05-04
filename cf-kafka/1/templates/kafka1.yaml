@@ -19,8 +19,8 @@ spec:
     spec:
       containers:
         - name: kafka1
-          image: {{ .Values.image.zookeeper.repository }}:{{ .Values.image.zookeeper.tag }}
-          imagePullPolicy: {{ .Values.image.zookeeper.pullPolicy }}
+          image: {{ .Values.image.kafka.repository }}:{{ .Values.image.kafka.tag }}
+          imagePullPolicy: {{ .Values.image.kafka.pullPolicy }}
           env:
             - name: KAFKA_ADVERTISED_LISTENERS
               value: "INTERNAL://queue-kafka:30092,EXTERNAL://kafka1:9092"

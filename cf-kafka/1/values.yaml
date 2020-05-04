@@ -7,3 +7,7 @@ image:
     repository: confluentinc/cp-zookeeper
     tag: latest
     pullPolicy: Always
+  kafka:
+    repository: confluentinc/cp-kafka
+    tag: latest
+    pullPolicy: Always
