@@ -3,4 +3,4 @@ appVersion: "5.0"
 description: Kafka - Corporación Favorita 
 name: cf-kafka
 version: 1
-icon: file://../logo-favorita.png
+icon: file://../logo-kafka.png
