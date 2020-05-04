@@ -1,6 +1,5 @@
 replicas: 1
 
-name: zookeeper1
 namespace: cf-kafka
 
 image:

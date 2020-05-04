@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.name }}
+  name: zookeeper1
   namespace: {{ .Values.namespace }}
   labels:
-    app: {{ .Values.name }}
+    app: zookeeper1
 spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      app: {{ .Values.name }}
+      app: zookeeper1
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: {{ .Values.name }}
+        app: zookeeper1
     spec:
       containers:
-        - name: {{ .Values.name }}
+        - name: zookeeper1
           image: {{ .Values.image.zookeeper.repository }}:{{ .Values.image.zookeeper.tag }}
           imagePullPolicy: {{ .Values.image.zookeeper.pullPolicy }}
           env:
@@ -37,4 +37,21 @@ spec:
           ports:
             - containerPort: 2181
               name: http
-              protocol: TCP      
+              protocol: TCP
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: zookeeper1
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    app: zookeeper1
+  ports:
+  - protocol: TCP
+    port: 2181
+    targetPort: 2181
+  type: ClusterIP
+status:
+  loadBalancer: {}
+ 
