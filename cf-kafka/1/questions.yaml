@@ -4,19 +4,19 @@ questions:
   description: "KAFKA ADVERTISED LISTENERS"
   type: string
   required: true
-  label: KAFKA ADVERTISED LISTENERS
+  label: KAFKA 1
   group: "Kafka Settings"
 - variable: KAFKA2_LISTENERS
   default: "INTERNAL://queue-kafka:30093,EXTERNAL://kafka2:9092"
   description: "KAFKA ADVERTISED LISTENERS"
   type: string
   required: true
-  label: KAFKA ADVERTISED LISTENERS
+  label: KAFKA 2
   group: "Kafka Settings"
 - variable: KAFKA3_LISTENERS
   default: "INTERNAL://queue-kafka:30094,EXTERNAL://kafka3:9092"
   description: "KAFKA ADVERTISED LISTENERS"
   type: string
   required: true
-  label: KAFKA ADVERTISED LISTENERS
+  label: KAFKA 3
   group: "Kafka Settings"
