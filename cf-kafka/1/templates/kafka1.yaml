@@ -45,7 +45,7 @@ spec:
             - name: KAFKA_NUM_PARTITIONS
               value: "30"
             - name: KAFKA_ZOOKEEPER_CONNECT
-              value: "zookeeper1:2181"
+              value: "zookeeper1:2181,zookeeper2:2181,zookeeper3:2181"
           ports:
             - containerPort: 9092
               name: http

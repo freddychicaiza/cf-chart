@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: zookeeper1
+  name: zookeeper2
   namespace: {{ .Values.namespace }}
   labels:
-    app: zookeeper1
+    app: zookeeper2
 spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      app: zookeeper1
+      app: zookeeper2
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: zookeeper1
+        app: zookeeper2
     spec:
       containers:
-        - name: zookeeper1
+        - name: zookeeper2
           image: {{ .Values.image.zookeeper.repository }}:{{ .Values.image.zookeeper.tag }}
           imagePullPolicy: {{ .Values.image.zookeeper.pullPolicy }}
           env:
@@ -27,13 +27,13 @@ spec:
             - name: ZOOKEEPER_INIT_LIMIT
               value: "5"
             - name: ZOOKEEPER_SERVER_ID
-              value: "1"
+              value: "2"
             - name: ZOOKEEPER_SYNC_LIMIT
               value: "2"
             - name: ZOOKEEPER_TICK_TIME
               value: "2000"
             - name: ZOO_SERVERS
-              value: "server.1=0.0.0.0:2888:3888;2181 server.2=zookeeper2:2888:3888;2181 server.3=zookeeper3:2888:3888;2181"
+              value: "server.1=zookeeper1:2888:3888;2181 server.2=0.0.0.0:2888:3888;2181 server.3=zookeeper3:2888:3888;2181"
           ports:
             - containerPort: 2181
               name: http
@@ -42,11 +42,11 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: zookeeper1
+  name: zookeeper2
   namespace: {{ .Values.namespace }}
 spec:
   selector:
-    app: zookeeper1
+    app: zookeeper2
   ports:
   - protocol: TCP
     port: 2181
