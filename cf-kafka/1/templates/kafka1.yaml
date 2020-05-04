@@ -35,9 +35,7 @@ spec:
             - name: KAFKA_INTER_BROKER_LISTENER_NAME
               value: "INTERNAL"
             - name: KAFKA_LISTENERS
-              value: "INTERNAL"
-            - name: INTERNAL://0.0.0.0:9092,EXTERNAL://0.0.0.0:30092
-              value: "INTERNAL"
+              value: "INTERNAL://0.0.0.0:9092,EXTERNAL://0.0.0.0:30092"
             - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
               value: "INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT"
             - name: KAFKA_MESSAGE_MAX_BYTES
