@@ -23,7 +23,7 @@ spec:
           imagePullPolicy: {{ .Values.image.kafdrop.pullPolicy }}
           env:
             - name: KAFKA_BROKERCONNECT
-              value: "kafka1:9092"
+              value: "kafka1:9092,kafka2:9092,kafka3:9092"
           ports:
             - containerPort: 9000
               name: http
