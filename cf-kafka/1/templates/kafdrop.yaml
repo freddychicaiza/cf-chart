@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafdrop
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: kafdrop
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: kafdrop
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: kafdrop
+    spec:
+      containers:
+        - name: kafdrop
+          image: {{ .Values.image.kafdrop.repository }}:{{ .Values.image.kafdrop.tag }}
+          imagePullPolicy: {{ .Values.image.kafdrop.pullPolicy }}
+          env:
+            - name: KAFKA_BROKERCONNECT
+              value: "kafka1:9092"
+          ports:
+            - containerPort: 9000
+              name: http
+              protocol: TCP
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: kafdrop
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    app: kafdrop
+  ports:
+  - port: 9000
+    targetPort: 9000
+    nodePort: 30000
+  type: NodePort
+status:
+  loadBalancer: {}

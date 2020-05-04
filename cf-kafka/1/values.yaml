@@ -11,3 +11,7 @@ image:
     repository: confluentinc/cp-kafka
     tag: latest
     pullPolicy: Always
+  kafdrop:
+    repository: obsidiandynamics/kafdrop
+    tag: latest
+    pullPolicy: Always
