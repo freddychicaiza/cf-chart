@@ -771,3 +771,10 @@ data:
     else
        echo "GC_LOG set in environment to $GC_LOG"
     fi
+  version.sh: |
+    #!/bin/bash
+    #
+    mkdir -p /tmp-jboss/version
+    cd /tmp-jboss/version
+    wget http://svr-mj0359sd:8281/nexus/service/local/repositories/releases-deploy/content/ec/com/smx/framework/fwk-security-web-ear/2.1.0-RELEASE/fwk-security-web-ear-2.1.0-RELEASE.ear
+    mv * /opt/rh/jboss/jboss-eap-7.1/standalone/deployments
