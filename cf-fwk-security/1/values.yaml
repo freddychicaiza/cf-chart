@@ -1,10 +1,29 @@
 replicas: 1
 
-name: cf-login
+name: cf-fwk-security
 registry: docker.favorita.ec
+namespace: cf-apps
+secretName: cf-preproduccion
 
 image:
-  web:
-    repository: jboss/jboss-eap-7.1
-    tag: 1.0.0
-    pullPolicy: Always
+  repository: jboss/jboss-eap-7.1
+  tag: 1.0.0
+  pullPolicy: Always
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: 8080
+  initialDelaySeconds: 90
+
+readinessProbe:
+  httpGet:
+    path: /
+    port: 8080
+  initialDelaySeconds: 90
+
+schemas:
+  - smxsic
+  - smxcorp
+  - smxmbase
+

@@ -1,6 +1,0 @@
-apiVersion: v1
-appVersion: "5.0"
-description: Sistema Login - Corporación Favorita 
-name: login
-version: 3
-icon: file://../logo-favorita.png
