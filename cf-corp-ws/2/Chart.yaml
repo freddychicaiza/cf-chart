@@ -1,0 +1,6 @@
+apiVersion: v1
+appVersion: "5.0"
+description: Sistema Corporativo WS - Corporación Favorita 
+name: corporativo-ws
+version: 2
+icon: file://../logo-favorita.png

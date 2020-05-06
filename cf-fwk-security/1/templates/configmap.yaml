@@ -154,9 +154,8 @@ data:
                     <level name="WARN"/>
                 </logger>
                 <root-logger>
-                    <level name="INFO"/>
+                    <level name="WARN"/>
                     <handlers>
-                        <handler name="CONSOLE"/>
                         <handler name="FILE_LOG"/>
                     </handlers>
                 </root-logger>
