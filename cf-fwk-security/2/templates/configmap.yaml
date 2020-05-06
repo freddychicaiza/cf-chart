@@ -123,12 +123,12 @@ data:
                 <console-handler name="CONSOLE">
                     <level name="INFO"/>
                     <formatter>
-                        <named-formatter name="COLOR-PATTERN"/>
+                        <pattern-formatter pattern="%d{dd MMM yyyy HH:mm:ss,SSS} %-5p [%c] (%t) %s%E%n"/>
                     </formatter>
                 </console-handler>
                 <periodic-rotating-file-handler name="FILE" autoflush="true">
                     <formatter>
-                        <named-formatter name="PATTERN"/>
+                        <pattern-formatter pattern="%d{dd MMM yyyy HH:mm:ss,SSS} %-5p [%c] (%t) %s%E%n"/>
                     </formatter>
                     <file relative-to="jboss.server.log.dir" path="server.log"/>
                     <suffix value=".yyyy-MM-dd"/>
@@ -156,6 +156,7 @@ data:
                 <root-logger>
                     <level name="WARN"/>
                     <handlers>
+                        <handler name="CONSOLE"/>
                         <handler name="FILE_LOG"/>
                     </handlers>
                 </root-logger>
