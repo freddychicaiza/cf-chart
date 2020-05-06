@@ -1,6 +1,6 @@
 replicas: 1
 
-name: cf-fwk-security
+name: cf-login-web
 registry: docker.favorita.ec
 namespace: cf-apps
 secretName: cf-preproduccion
