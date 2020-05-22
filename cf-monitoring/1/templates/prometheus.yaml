@@ -1,43 +1,43 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pushgateway
+  name: prometheus
   namespace: {{ .Values.namespace }}
   labels:
-    app: pushgateway
+    app: prometheus
 spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      app: pushgateway
+      app: prometheus
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: pushgateway
+        app: prometheus
     spec:
       containers:
-        - name: pushgateway
-          image: {{ .Values.image.pushgateway.repository }}:{{ .Values.image.pushgateway.tag }}
-          imagePullPolicy: {{ .Values.image.pushgateway.pullPolicy }}
+        - name: prometheus
+          image: {{ .Values.image.prometheus.repository }}:{{ .Values.image.prometheus.tag }}
+          imagePullPolicy: {{ .Values.image.prometheus.pullPolicy }}
           ports:
-            - containerPort: 9091
+            - containerPort: 9090
               name: http
               protocol: TCP
 ---
 kind: Service
 apiVersion: v1
 metadata:
-  name: pushgateway
+  name: prometheus
   namespace: {{ .Values.namespace }}
 spec:
   selector:
-    app: pushgateway
+    app: prometheus
   ports:
   - protocol: TCP
-    port: 9091
-    targetPort: 9091
+    port: 9090
+    targetPort: 9090
   type: ClusterIP
 status:
   loadBalancer: {}
@@ -45,14 +45,14 @@ status:
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: pushgateway
+  name: prometheus
   namespace: {{ .Values.namespace }}
 spec:
   rules:
-  - host: pushgateway.favorita.ec
+  - host: prometheus.favorita.ec
     http:
       paths:
       - path: /
         backend:
-          serviceName: pushgateway
-          servicePort: 9091
+          serviceName: prometheus
+          servicePort: 9090
