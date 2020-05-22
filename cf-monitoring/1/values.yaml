@@ -1,0 +1,17 @@
+replicas: 1
+
+namespace: cf-kafka
+
+image:
+  pushgateway:
+    repository: prom/pushgateway
+    tag: latest
+    pullPolicy: Always
+  prometheus:
+    repository: prom/prometheus
+    tag: latest
+    pullPolicy: Always
+  grafana:
+    repository: grafana/grafana
+    tag: latest
+    pullPolicy: Always

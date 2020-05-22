@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pushgateway
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: pushgateway
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: pushgateway
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: pushgateway
+    spec:
+      containers:
+        - name: pushgateway
+          image: {{ .Values.image.pushgateway.repository }}:{{ .Values.image.pushgateway.tag }}
+          imagePullPolicy: {{ .Values.image.pushgateway.pullPolicy }}
+          ports:
+            - containerPort: 9091
+              name: http
+              protocol: TCP
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: pushgateway
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    app: pushgateway
+  ports:
+  - port: 9091
+    targetPort: 9091
+  type: NodePort
+status:
+  loadBalancer: {}
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: pushgateway
+  namespace: {{ .Values.namespace }}
+spec:
+  rules:
+  - host: pushgateway.favorita.ec
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: pushgateway
+          servicePort: 9091
