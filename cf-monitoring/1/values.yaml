@@ -1,6 +1,6 @@
 replicas: 1
 
-namespace: cf-kafka
+namespace: cf-monitoring
 
 image:
   pushgateway:
