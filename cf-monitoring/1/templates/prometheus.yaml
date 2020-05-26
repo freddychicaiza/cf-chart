@@ -21,20 +21,20 @@ spec:
       - args:
         - --config.file=/etc/prometheus/prometheus.yml
         - --storage.tsdb.path=/prometheus
-        - name: prometheus
-          image: {{ .Values.image.prometheus.repository }}:{{ .Values.image.prometheus.tag }}
-          imagePullPolicy: {{ .Values.image.prometheus.pullPolicy }}
-          ports:
-            - containerPort: 9090
-              name: http
-              protocol: TCP
-          volumeMounts:
-          - mountPath: /etc/prometheus
-            name: vol1
-      volumes:
-      - configMap:
-          name: prometheus-config
-        name: vol1
+        name: prometheus
+        image: {{ .Values.image.prometheus.repository }}:{{ .Values.image.prometheus.tag }}
+        imagePullPolicy: {{ .Values.image.prometheus.pullPolicy }}
+        ports:
+          - containerPort: 9090
+            name: http
+            protocol: TCP
+        volumeMounts:
+        - mountPath: /etc/prometheus
+          name: vol1
+    volumes:
+    - configMap:
+        name: prometheus-config
+      name: vol1
 ---
 kind: Service
 apiVersion: v1
