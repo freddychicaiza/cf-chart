@@ -28,6 +28,15 @@ spec:
           - containerPort: 9090
             name: http
             protocol: TCP
+        volumeMounts:
+        - mountPath: /etc/prometheus
+          name: vol1
+      volumes:
+      - configMap:
+          defaultMode: 511
+          name: prometheus-config
+          optional: true
+        name: vol1
 ---
 kind: Service
 apiVersion: v1
