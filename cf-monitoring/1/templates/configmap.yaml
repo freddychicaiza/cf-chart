@@ -33,4 +33,4 @@ data:
         metrics_path: '/metrics'
         honor_labels: true
         static_configs:
-          - targets: ['push-gateway:9091']
+          - targets: ['pushgateway:9091']
