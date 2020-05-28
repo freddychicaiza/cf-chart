@@ -10,6 +10,10 @@ spec:
   - port: 8080
     targetPort: 8080
     nodePort: 30001
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 86400
   type: NodePort
 status:
   loadBalancer: {}
