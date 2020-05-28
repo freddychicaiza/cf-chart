@@ -1,0 +1,129 @@
+questions:
+- variable: registry
+  default: "docker.favorita.ec"
+  description: "Docker registry"
+  type: string
+  required: true
+  label: Docker registry
+  group: "App Version"
+- variable: image.repository
+  default: "jboss/cf-corporativo"
+  description: "Docker image name"
+  type: string
+  required: true
+  label: Docker image name
+  group: "App Version"
+- variable: image.tag
+  default: "1.0.0"
+  description: "Docker image version TAG"
+  type: string
+  required: true
+  label: Docker image version TAG
+  group: "App Version"
+- variable: image.pullPolicy
+  default: "Always"
+  description: "Docker pull policy"
+  type: string
+  required: true
+  label: Docker pull policy
+  group: "App Version"
+- variable: secretName
+  default: "cf-preproduccion"
+  description: "Secret"
+  type: secret
+  required: true
+  label: Secret
+  group: "App Version"
+- variable: schemas
+  default: "{smxmbase,smxcorp,smxsic}"
+  description: "APP Schemas"
+  type: string
+  required: true
+  label: APP Schemas
+  group: "App Version"
+
+- variable: JVM_XMS
+  default: "1G"
+  description: "JVM Memoria inicial"
+  type: string
+  required: true
+  label: JVM Memoria inicial
+  group: "Server Settings"
+- variable: JVM_XMX
+  default: "2G"
+  description: "JVM Memoria máxima"
+  type: string
+  required: true
+  label: JVM Memoria máxima
+  group: "Server Settings"
+- variable: JVM_MaxMetaspaceSize
+  default: "512m"
+  description: "JVM MaxMetaspaceSize"
+  type: string
+  required: true
+  label: JVM MaxMetaspaceSize
+  group: "Server Settings"
+
+- variable: SYS_DOMAIN
+  default: "https://aplpre.favorita.ec"
+  description: "System domain"
+  type: string
+  required: true
+  label: System domain
+  group: "APP Settings"
+- variable: SYS_ENVIRONMENT
+  default: "PRUEBAS"
+  description: "System environment"
+  type: string
+  required: true
+  label: System environment
+  group: "APP Settings"
+
+- variable: livenessProbe.httpGet.path
+  default: "/"
+  description: "Liveness probe path"
+  type: string
+  required: true
+  label: Liveness probe path
+  group: "Liveness Probe Settings"
+- variable: livenessProbe.httpGet.port
+  default: "8080"
+  description: "Liveness probe port"
+  type: string
+  required: true
+  label: Liveness probe port
+  group: "Liveness Probe Settings"
+- variable: livenessProbe.initialDelaySeconds
+  default: "90"
+  description: "Liveness initial delay seconds"
+  type: string
+  required: true
+  label: Liveness initial delay seconds
+  group: "Liveness Probe Settings"
+
+- variable: readinessProbe.httpGet.path
+  default: "/"
+  description: "Readiness probe path"
+  type: string
+  required: true
+  label: Readiness probe path
+  group: "Readiness Probe Settings"
+- variable: readinessProbe.httpGet.port
+  default: "8080"
+  description: "Readiness probe port"
+  type: string
+  required: true
+  label: Readiness probe port
+  group: "Readiness Probe Settings"
+- variable: readinessProbe.initialDelaySeconds
+  default: "90"
+  description: "Readiness initial delay seconds"
+  type: string
+  required: true
+  label: Readiness initial delay seconds
+  group: "Readiness Probe Settings"
+
+
+
+
+
