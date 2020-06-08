@@ -9,7 +9,7 @@ metadata:
 spec:
   storageClassName: longhorn
   accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
   resources:
     requests:
       storage: {{ .Values.persistence.size }}
