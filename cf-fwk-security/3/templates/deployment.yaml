@@ -57,13 +57,17 @@ spec:
           volumeMounts:
           - mountPath: /tmp-jboss
             name: vol1
+          {{- if .Values.persistence.enabled }}
           - mountPath: {{ .Values.persistence.path }}
             name: vol2
+          {{- end }}
       volumes:
       - configMap:
           name: "{{ .Values.name }}-standalone-config"
         name: vol1
+      {{- if .Values.persistence.enabled }}
       - name: vol2
         persistentVolumeClaim:
           claimName: "{{ .Values.name }}-data-pv-claim"
+      {{- end }}
       
