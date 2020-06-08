@@ -27,3 +27,10 @@ schemas:
   - smxcorp
   - smxmbase
 
+persistence:
+  enabled: false
+  size: 1Gi
+  path: /var/smx/archivos
+
+
+
