@@ -78,6 +78,25 @@ questions:
   required: true
   label: System environment
   group: "APP Settings"
+- variable: persistence.enabled
+  default: false
+  description: "Enable persistent volume for APP"
+  type: boolean
+  required: true
+  label: APP Persistent Volume Enabled
+  show_subquestion_if: true
+  group: "APP Settings"
+  subquestions:
+  - variable: persistence.size
+    default: "1Gi"
+    description: "APP Persistent Volume Size"
+    type: string
+    label: APP Volume Size
+  - variable: persistence.path
+    default: "/var/smx/archivos"
+    description: "APP Persistent path"
+    type: string
+    label: APP Persistent path
 
 - variable: livenessProbe.httpGet.path
   default: "/"

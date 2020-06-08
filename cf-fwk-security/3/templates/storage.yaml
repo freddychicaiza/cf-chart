@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: "{{ .Values.name }}-data-pv-claim"  
+  name: "{{ .Values.name }}-data-pv-claim"
   namespace: {{ .Values.namespace }}
   labels:
     app: {{ .Values.name }}
