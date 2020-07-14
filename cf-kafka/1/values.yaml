@@ -15,3 +15,10 @@ image:
     repository: obsidiandynamics/kafdrop
     tag: latest
     pullPolicy: Always
+
+storage:
+  kafka:
+    size: 50Gi
+  zookeeper:
+    size: 10Gi
+  class: rook-cephfs

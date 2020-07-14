@@ -1,3 +1,17 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-zookeeper1
+  namespace: {{ .Values.namespace }}
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: {{ .Values.storage.zookeeper.size }}
+  storageClassName: {{ .Values.storage.class }}
+  volumeMode: Filesystem
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -38,6 +52,13 @@ spec:
             - containerPort: 2181
               name: http
               protocol: TCP
+          volumeMounts:
+          - mountPath: /var/lib/zookeeper/data
+            name: vol1
+        volumes:
+        - name: vol1
+          persistentVolumeClaim:
+            claimName: pvc-zookeeper1
 ---
 kind: Service
 apiVersion: v1
