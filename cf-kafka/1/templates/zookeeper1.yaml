@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-zookeeper1
+  name: pvc-data-zookeeper1
   namespace: {{ .Values.namespace }}
 spec:
   accessModes:
@@ -9,6 +9,20 @@ spec:
   resources:
     requests:
       storage: {{ .Values.storage.zookeeper.size }}
+  storageClassName: {{ .Values.storage.class }}
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-logs-zookeeper1
+  namespace: {{ .Values.namespace }}
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
   storageClassName: {{ .Values.storage.class }}
   volumeMode: Filesystem
 ---
@@ -55,10 +69,15 @@ spec:
           volumeMounts:
           - mountPath: /var/lib/zookeeper/data
             name: vol1
+          - mountPath: /var/lib/zookeeper/log
+            name: vol2
       volumes:
       - name: vol1
         persistentVolumeClaim:
-          claimName: pvc-zookeeper1
+          claimName: pvc-data-zookeeper1
+      - name: vol2
+        persistentVolumeClaim:
+          claimName: pvc-logs-zookeeper1
 ---
 kind: Service
 apiVersion: v1
