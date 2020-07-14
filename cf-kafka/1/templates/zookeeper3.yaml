@@ -15,7 +15,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-logs-zookeeper1
+  name: pvc-logs-zookeeper3
   namespace: {{ .Values.namespace }}
 spec:
   accessModes:
