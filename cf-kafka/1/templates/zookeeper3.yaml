@@ -55,10 +55,10 @@ spec:
           volumeMounts:
           - mountPath: /var/lib/zookeeper/data
             name: vol1
-        volumes:
-        - name: vol1
-          persistentVolumeClaim:
-            claimName: pvc-zookeeper3
+      volumes:
+      - name: vol1
+        persistentVolumeClaim:
+          claimName: pvc-zookeeper3
 ---
 kind: Service
 apiVersion: v1

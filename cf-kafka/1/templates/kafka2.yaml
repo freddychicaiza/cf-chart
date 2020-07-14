@@ -67,10 +67,10 @@ spec:
           volumeMounts:
           - mountPath: /var/lib/kafka/data
             name: vol1
-        volumes:
-        - name: vol1
-          persistentVolumeClaim:
-            claimName: pvc-kafka2
+      volumes:
+      - name: vol1
+        persistentVolumeClaim:
+          claimName: pvc-kafka2
 ---
 kind: Service
 apiVersion: v1
