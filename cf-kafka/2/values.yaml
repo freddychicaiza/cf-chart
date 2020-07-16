@@ -1,0 +1,24 @@
+replicas: 1
+
+namespace: cf-kafka
+
+image:
+  zookeeper:
+    repository: confluentinc/cp-zookeeper
+    tag: latest
+    pullPolicy: Always
+  kafka:
+    repository: confluentinc/cp-kafka
+    tag: latest
+    pullPolicy: Always
+  kafdrop:
+    repository: obsidiandynamics/kafdrop
+    tag: latest
+    pullPolicy: Always
+
+storage:
+  kafka:
+    size: 50Gi
+  zookeeper:
+    size: 10Gi
+  class: rook-cephfs

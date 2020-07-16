@@ -1,0 +1,96 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-data-zookeeper2
+  namespace: {{ .Values.namespace }}
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: {{ .Values.storage.zookeeper.size }}
+  storageClassName: {{ .Values.storage.class }}
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-logs-zookeeper2
+  namespace: {{ .Values.namespace }}
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: {{ .Values.storage.class }}
+  volumeMode: Filesystem
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zookeeper2
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: zookeeper2
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: zookeeper2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: zookeeper2
+    spec:
+      containers:
+        - name: zookeeper2
+          image: {{ .Values.image.zookeeper.repository }}:{{ .Values.image.zookeeper.tag }}
+          imagePullPolicy: {{ .Values.image.zookeeper.pullPolicy }}
+          env:
+            - name: ZOOKEEPER_CLIENT_PORT
+              value: "32181"
+            - name: ZOOKEEPER_INIT_LIMIT
+              value: "5"
+            - name: ZOOKEEPER_SERVER_ID
+              value: "2"
+            - name: ZOOKEEPER_SYNC_LIMIT
+              value: "2"
+            - name: ZOOKEEPER_TICK_TIME
+              value: "2000"
+            - name: ZOO_SERVERS
+              value: "zookeeper1:22888:23888;zookeeper2:32888:33888;zookeeper3:42888:43888"
+          ports:
+            - containerPort: 32181
+              name: http
+              protocol: TCP
+          volumeMounts:
+          - mountPath: /var/lib/zookeeper/data
+            name: vol1
+          - mountPath: /var/lib/zookeeper/log
+            name: vol2
+      volumes:
+      - name: vol1
+        persistentVolumeClaim:
+          claimName: pvc-data-zookeeper2
+      - name: vol2
+        persistentVolumeClaim:
+          claimName: pvc-logs-zookeeper2
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: zookeeper2
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    app: zookeeper2
+  ports:
+  - protocol: TCP
+    port: 32181
+    targetPort: 32181
+  type: ClusterIP
+status:
+  loadBalancer: {}

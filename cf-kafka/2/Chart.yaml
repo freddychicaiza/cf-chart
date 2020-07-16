@@ -1,0 +1,6 @@
+apiVersion: v1
+appVersion: "5.0"
+description: Kafka - Corporación Favorita 
+name: cf-kafka
+version: 2
+icon: file://../logo-kafka.png
