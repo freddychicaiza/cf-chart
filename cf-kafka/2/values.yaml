@@ -5,11 +5,11 @@ namespace: cf-kafka
 image:
   zookeeper:
     repository: confluentinc/cp-zookeeper
-    tag: latest
+    tag: 5.0.0
     pullPolicy: Always
   kafka:
     repository: confluentinc/cp-kafka
-    tag: latest
+    tag: 5.0.0
     pullPolicy: Always
   kafdrop:
     repository: obsidiandynamics/kafdrop
