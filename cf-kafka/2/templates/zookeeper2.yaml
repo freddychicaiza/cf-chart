@@ -97,6 +97,7 @@ spec:
   - protocol: TCP
     port: 32181
     targetPort: 32181
+    name: client
   type: ClusterIP
 status:
   loadBalancer: {}
@@ -113,9 +114,11 @@ spec:
   - protocol: TCP
     port: 32888
     targetPort: 32888
+    name: server
   - protocol: TCP
     port: 33888
     targetPort: 33888
+    name: leader-election
   type: ClusterIP
 status:
   loadBalancer: {}
