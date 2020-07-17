@@ -65,10 +65,13 @@ spec:
           ports:
             - containerPort: 42181
               name: client
+              protocol: TCP
             - containerPort: 42888
               name: server
+              protocol: TCP
             - containerPort: 43888
               name: leader-election
+              protocol: TCP
           volumeMounts:
           - mountPath: /var/lib/zookeeper/data
             name: vol1
@@ -107,10 +110,12 @@ spec:
   selector:
     app: zookeeper3
   ports:
-  - port: 42888
-    name: server
-  - port: 43888
-    name: leader-election
+  - protocol: TCP
+    port: 42888
+    targetPort: 42888
+  - protocol: TCP
+    port: 43888
+    targetPort: 43888
   type: ClusterIP
 status:
   loadBalancer: {}
