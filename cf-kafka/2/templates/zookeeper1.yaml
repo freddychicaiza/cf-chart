@@ -61,11 +61,14 @@ spec:
             - name: ZOOKEEPER_TICK_TIME
               value: "2000"
             - name: ZOO_SERVERS
-              value: "zookeeper1:22888:23888;zookeeper2:32888:33888;zookeeper3:42888:43888"
+              value: "zookeeper1-hs:22888:23888;zookeeper2-hs:32888:33888;zookeeper3-hs:42888:43888"
           ports:
             - containerPort: 22181
-              name: http
-              protocol: TCP
+              name: client
+            - containerPort: 22888
+              name: server
+            - containerPort: 23888
+              name: leader-election
           volumeMounts:
           - mountPath: /var/lib/zookeeper/data
             name: vol1
@@ -91,6 +94,23 @@ spec:
   - protocol: TCP
     port: 22181
     targetPort: 22181
+  type: ClusterIP
+status:
+  loadBalancer: {}
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: zookeeper1-hs
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    app: zookeeper1
+  ports:
+  - port: 22888
+    name: server
+  - port: 23888
+    name: leader-election
   type: ClusterIP
 status:
   loadBalancer: {}
