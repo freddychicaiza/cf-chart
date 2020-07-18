@@ -61,17 +61,14 @@ spec:
             - name: ZOOKEEPER_TICK_TIME
               value: "2000"
             - name: ZOOKEEPER_SERVERS
-              value: "zookeeper1-hs:22888:23888;zookeeper2-hs:32888:33888;zookeeper3-hs:42888:43888"
+              value: "zookeeper1:22888:23888;zookeeper2:32888:33888;zookeeper3:42888:43888"
           ports:
             - containerPort: 32181
               name: client
-              protocol: TCP
             - containerPort: 32888
               name: server
-              protocol: TCP
             - containerPort: 33888
               name: leader-election
-              protocol: TCP
           volumeMounts:
           - mountPath: /var/lib/zookeeper/data
             name: vol1
@@ -85,40 +82,20 @@ spec:
         persistentVolumeClaim:
           claimName: pvc-logs-zookeeper2
 ---
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
+  namespace: {{ .Values.namespace }}
   name: zookeeper2
-  namespace: {{ .Values.namespace }}
-spec:
-  selector:
+  labels:
     app: zookeeper2
+spec:
   ports:
-  - protocol: TCP
-    port: 32181
-    targetPort: 32181
+  - port: 32181
     name: client
-  type: ClusterIP
-status:
-  loadBalancer: {}
----
-kind: Service
-apiVersion: v1
-metadata:
-  name: zookeeper2-hs
-  namespace: {{ .Values.namespace }}
-spec:
+  - port: 32888
+    name: server
+  - port: 33888
+    name: leader-election
   selector:
     app: zookeeper2
-  ports:
-  - protocol: TCP
-    port: 32888
-    targetPort: 32888
-    name: server
-  - protocol: TCP
-    port: 33888
-    targetPort: 33888
-    name: leader-election
-  type: ClusterIP
-status:
-  loadBalancer: {}
