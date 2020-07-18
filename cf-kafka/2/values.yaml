@@ -6,11 +6,11 @@ image:
   zookeeper:
     repository: confluentinc/cp-zookeeper
     tag: latest
-    pullPolicy: Always
+    pullPolicy: 5.5.0
   kafka:
     repository: confluentinc/cp-kafka
     tag: latest
-    pullPolicy: Always
+    pullPolicy: 5.5.0
   kafdrop:
     repository: obsidiandynamics/kafdrop
     tag: latest

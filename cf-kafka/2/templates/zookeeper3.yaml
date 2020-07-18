@@ -61,7 +61,7 @@ spec:
             - name: ZOOKEEPER_TICK_TIME
               value: "2000"
             - name: ZOOKEEPER_SERVERS
-              value: "zookeeper1:22888:23888;zookeeper2:32888:33888;zookeeper3:42888:43888"
+              value: "zookeeper1:22888:23888;zookeeper2:32888:33888;0.0.0.0:42888:43888"
           ports:
             - containerPort: 42181
               name: client
