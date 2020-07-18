@@ -1,0 +1,57 @@
+questions:
+- variable: storage.class
+  default: "rook-cephfs"
+  description: "STORAGE-CLASS"
+  type: string
+  required: true
+  label: STORAGE-CLASS
+  group: "Size Settings"
+- variable: storage.kafka.size
+  default: "50Gi"
+  description: "KAFKA SIZE"
+  type: string
+  required: true
+  label: KAFKA SIZE
+  group: "Size Settings"
+- variable: storage.zookeeper.size
+  default: "10Gi"
+  description: "ZOOKEEPER SIZE"
+  type: string
+  required: true
+  label: ZOOKEEPER SIZE
+  group: "Size Settings"
+- variable: KAFKA1_LISTENERS
+  default: "INTERNAL://queue-kafka:30092,EXTERNAL://kafka1:9092"
+  description: "KAFKA ADVERTISED LISTENERS"
+  type: string
+  required: true
+  label: KAFKA 1
+  group: "Kafka Settings"
+- variable: KAFKA2_LISTENERS
+  default: "INTERNAL://queue-kafka:30093,EXTERNAL://kafka2:9092"
+  description: "KAFKA ADVERTISED LISTENERS"
+  type: string
+  required: true
+  label: KAFKA 2
+  group: "Kafka Settings"
+- variable: KAFKA3_LISTENERS
+  default: "INTERNAL://queue-kafka:30094,EXTERNAL://kafka3:9092"
+  description: "KAFKA ADVERTISED LISTENERS"
+  type: string
+  required: true
+  label: KAFKA 3
+  group: "Kafka Settings"
+- variable: KAFKA4_LISTENERS
+  default: "INTERNAL://queue-kafka:30095,EXTERNAL://kafka4:9092"
+  description: "KAFKA ADVERTISED LISTENERS"
+  type: string
+  required: true
+  label: KAFKA 4
+  group: "Kafka Settings"
+- variable: KAFKA5_LISTENERS
+  default: "INTERNAL://queue-kafka:30096,EXTERNAL://kafka5:9092"
+  description: "KAFKA ADVERTISED LISTENERS"
+  type: string
+  required: true
+  label: KAFKA 5
+  group: "Kafka Settings"
