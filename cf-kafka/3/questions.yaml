@@ -55,3 +55,10 @@ questions:
   required: true
   label: KAFKA 5
   group: "Kafka Settings"
+- variable: image.zookeeper.repository
+  default: "confluentinc/cp-zookeeper"
+  description: "Zookeeper Image"
+  type: string
+  required: true
+  label: Zookeeper Image
+  group: "Images Version"
